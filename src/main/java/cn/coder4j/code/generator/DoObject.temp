@@ -1,0 +1,44 @@
+package ${project.path}.dataobject;
+
+
+
+/**
+* 映射表:  ${table.name}
+* 注释:   ${table.comment}
+*/
+public class ${table.name}DO{
+
+<%
+for (field in fields){
+%>
+    /**
+    * 映射字段：${field.name}
+    * 注释：   ${field.comment}
+    */
+    private ${field.type} ${field.name};
+<%
+}
+%>
+<%
+for (field in fields){
+    var firstLetter = strutil.toUpperCase(strutil.subStringTo(field.name, 0,1));
+    var afterLetters = strutil.subString(field.name, 1);
+    var fieldFirst = firstLetter + afterLetters;
+%>
+    /**
+    * Set ${field.name}
+    */
+    public void set${fieldFirst}(Integer ${field.name}){
+        this.id = id;
+    }
+
+    /**
+    * Get ${field.name}
+    */
+    public ${field.type} get${fieldFirst}(){
+        return ${field.name};
+    }
+<%
+}
+%>
+}

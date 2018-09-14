@@ -19,14 +19,13 @@ import java.util.List;
  */
 public class DbUtils {
 
-    private static SimpleDataSource dataSource = new SimpleDataSource("jdbc:mysql:///bikestation", "root", "root");
+    private static SimpleDataSource dataSource = new SimpleDataSource("jdbc:mysql://127.0.0.1:3306",
+            "root", "1234");
 
     private static SqlRunner sqlRunner = SqlRunner.create(dataSource);
 
     public static void main(String[] args) {
-
-
-        List<Table> tables = finaAllTable("bikestation");
+        List<Table> tables = finaAllTable("code-generate");
         for (Table table : tables) {
             System.out.println(findColumn(table.getName()));
         }
